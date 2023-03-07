@@ -293,3 +293,155 @@
         6. filename - 定义文档/资源的名称
 
 
+------------
+15. HTML5
+    1. 首先在HTML文档第一行必须声明<!DOCTYPE html>
+    2. 对于中文网页需要使用<meta charset="utf-8>
+    3. 改进：
+        1. 新元素：有的也被移除（dir, font, dig, center, frame, frameset, noframes, strike, center, basefont, applet, acronym)
+
+        2. 新属性
+
+        3. 完全支持CSS3：（新选择器，新属性，动画，2d,3d转换，圆角，阴影效果，可下载字体） 
+        
+        4. Video, Audio：   
+            * HTML5<video>
+            * HTML5<audio>   
+            <video width="320" height="240" controls>
+            <source src="movie.mp4" type="video/mp4">
+            </video>
+
+        5. 2D, 3D制图:
+            * <canvas>元素
+            * 使用内联SVG
+            * 使用CSS3 2D/3d转换
+
+        6. 本地储存，本地SQL数据
+        7. web应用
+
+    4. 八个新的HTML语义（semantic)元素，所有都是块级元素
+        1. 为了让旧版本的游览器显示这些新的元素可以设置CSS的display属性值为：block   
+        header, section, footer, aside, nav, main, article, figure 
+        {display: block; }
+
+        2. 添加新元素：
+            1. 添加元素myHero并且定义样式。但是Internet explorer 8及其更早的不支持这个方法，需要用shiv来解决。
+        <head>
+        <script>document.createElement("myHero")</script>
+        <style>
+            myHero {
+            display: block;
+            background-color: #ddd;
+            padding: 50px;
+            font-size: 30px;}</style></head> 
+        <body><myHero>我的第一个新元素</myHero></body>   
+        
+
+    5. 新元素：
+        1. canvas：(JavaScript)   
+            * 一个画布在网页中是一个矩形框，二维网格，左上角的坐标为（0,0）通过 canvas 元素来绘制.
+            * 先定义画布标签，然后加入脚本。
+            * 标签只是图形容器，您必须使用脚本来绘制图形。
+                <!--画矩形-->
+                1. fillStyle: CSS颜色，渐变或图案，默认黑色   
+                2. fillRect(x,y,width,height):定义了矩形当前的填充方式。
+                <!-- 画线条 -->
+                3. moveTo(x,y):定义线条开始坐标
+                4. lineTo(x,y):定义线条结束坐标
+                5. stroke()：绘制线条
+                <!-- 画圆 -->
+                6. arc(x,y,start,stop):画圆
+                7. stroke()/fill():绘制圆形
+                <!-- 画文字 -->
+                8. font = "大小 字体样式“ :定义字体   
+                9. fillText(text,x,y):绘制实心的文本
+                10. strokeText(text,x,y):绘制空心的文本
+                <!-- 渐变，必须使用两种或以上的停止颜色 -->
+                11. createLinearGradient(x,y,x1,y1): 创建线条渐变   
+                12. createRadialGradient(x,y,r,x1,y1,r1):  创建一个径向/圆渐变
+                13. addColorStop(坐标，”颜色“)：指定颜色停止，参数使用坐标来描述，可以是0至1.
+                14. fillStyle: 填充渐变
+                15. fillRect(x,y,width,height):填充
+                <!-- 图像放到画布上 -->
+                16. drawImage(image,x,y)
+
+            <body><canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>   
+
+            <script>
+            <!--找到canvas元素-->
+            var c=document.getElementById("myCanvas");
+            <!-- 然后，创建 context 对象：-- >
+            var ctx=c.getContext("2d");
+
+            <!--下面的两行代码绘制一个红色的矩形 -->
+            ctx.fillStyle="#FF0000";
+            <!-- 在画布上绘制150x75的矩形，从左上角的（0,0）开始 -->
+            ctx.fillRect(0,0,150,75);
+            <!-- 画线条 -->
+            ctx.moveTo(0,0);
+            ctx.lineTo(200,100)
+            ctx.stroke();
+            <!-- 画圆 -->
+            ctx.beginPath();
+            ctx.arc(95,50,40,0,2*Math.PI);
+            ctx.stroke();
+            <!-- 画文本 -->
+            ctx.font=”30px Arial";
+            ctx.fillText("Hello World", 10, 50);
+            <!-- 渐变 -->
+            var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+            grd.addColorStop(0,"red");
+            grd.addColorStop(1,"white");
+            ctx.fillStyle=grd;
+            ctx.fillRect(10,10,150,80);
+            <!-- 图像放到画布上 -->
+            var img=document.getElementById("scream");
+            ctx.drawImage(img,10,10);
+            </script></body>
+
+        2. SVG:(XML)   
+            * 可缩放矢量图形 (Scalable Vector Graphics)
+            * HTML5支持内联SVG，使用 XML 格式定义图形
+            * SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失
+            * SVG 是万维网联盟的标准
+            * 与其他图像格式相比（比如 JPEG 和 GIF），使用 SVG 的优势在于：可伸缩，可通过文本编辑器来创建和修改，可以被搜索，索引，校本化或压缩。可在任何分辨率下呗高质量的打印，可在图像质量不下降的情况下呗放大。
+            * SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。
+
+            * svg：图形的容器，可以绘制路径，框，圆，文本，图形图像
+            
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <!-- 画圆 -->
+            <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" /></svg>
+            <!-- 五角星 -->
+            <polygon points="100,10 40,180 190,60 10,60 160,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"></svg>
+            
+
+
+        3. 新多媒体元素：
+            * audio:   
+            定义音频内容
+
+            * video:   
+            定义视频（video 或者 movie）
+
+            * source:   
+            定义多媒体资源 video 和 audio
+
+            * embed:   
+            定义嵌入的内容，比如插件。
+
+            * track:   
+            为诸如 video和 audio 元素之类的媒介规定外部文本轨道。  
+
+        4. 新表单元素：
+            * datalist:    
+            定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
+
+            * keygen:   
+            规定用于表单的密钥对生成器字段。
+
+            * output:   
+            定义不同类型的输出，比如脚本的输出。 
+
+        5. 新的语义和结构元素：很多，可以查      
+
