@@ -443,5 +443,158 @@
             * output:   
             定义不同类型的输出，比如脚本的输出。 
 
-        5. 新的语义和结构元素：很多，可以查      
+        5. 新的语义和结构元素：很多，可以查
+
+
+------------------
+16. MathML:
+    1. math:可以在游览器上书写数学符号和公式的置标语言
+    2. 也可以使用第三方库来支持
+    3. 很多游览器不可以显示 
+        <body> 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                
+         <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+                                
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>=</mo>
+                                
+            <msup><mi>c</mi><mn>2</mn></msup>
+         </mrow></math></body>      
+
+
+-------------
+17. Drag/Drop: 拖放
+    1. 抓取对象后拖到另外一个位置，在HTML5中所有的元素都可以进行拖放
+    2. 步骤：
+        * 首先设置元素为可拖放：
+            <img draggable="true">
+
+        * 拖动什么：规定元素被拖动时，会发生什么
+            1. 调用ondragstart事件的
+            2. setData()
+
+        * 放到何处:规定放置
+        （默认无法将元素/数据放在别的元素中，如果需要设置允许放置，必须阻止对元素的默认处理方式）
+            1. 调用ondragover事件的
+            2. event.preventDefault(）
+
+        * 进行放置：
+            1. 调用ondrop属性的一个函数
+            2. drop(event)
+            3. preventDefault(): 避免游览器对数据的默认处理（默认为以链接形式打开）
+        <head><script>
+        <!-- 避免游览器对数据的默认处理（默认为以链接形式打开 -->
+        function allowDrop(ev)
+        {   
+            ev.preventDefault();
+        }
+        <!-- 拖动什么 -->
+        function drag(ev)
+        {
+            ev.dataTransfer.setData("Text",ev.target.id);
+        }
+        <!-- 进行放置 -->
+        function drop(ev)
+        {
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+        </script></head>
+        <body>
+
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div> <br>
+        <img id="drag1" src="/images/logo.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+        </body>     
+
+--------------------
+18. Geolation地理定位：
+    1. 针对拥有GPS定位的设备，地理定位更精确：返回经度和纬度（Longitude and latitude）
+    2. 步骤：
+        * 首先创建地理定位方法：
+        function getLocation()
+
+        * 在方法中检测是否支持地理定位：
+        if(navigator.geolocation){...}
+        else{}
+
+        * 如果支持，运行：
+        getCurrentPosition()方法
+
+        * 如果不支持，运行：
+        x.innerHTML="该游览器不支持获取地理位置”；
+
+        * 如果getCurrentPosition()运行成功，则向参数showPosition中规定的函数返回coordinates 对象
+
+        * 获得并显示经度和纬度：
+        showPosition(position){}
+
+        * 当获取用户位置失败时运行的函数：
+        function showError(error){}   
+            1. 用户不允许地理定位:
+            Permission denied 
+            2. 无法获取当前位置:
+            Position unavailable
+            3. 操作超时:
+            Timeout
+
+        * <i>如果需要在地图中显示结果，需要访问可以使用经纬度的地图服务，比如谷歌地图或者百度地地图</i>
+        
+
+    <body>
+    <p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+    <button onclick="getLocation()">点我</button>
+    <script>
+    var x=document.getElementById("demo");
+    <!-- 创建地理定位方法 -->
+    function getLocation()
+    {
+        <!-- 判定是否支持地理定位 -->
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else
+        {
+            x.innerHTML="该浏览器不支持获取地理位置。";
+        }
+    }
+    <!-- 一旦支持后使用的方法 -->
+    function showPosition(position)
+    {
+        x.innerHTML="纬度: " + position.coords.latitude + 
+        "<br>经度: " + position.coords.longitude;	
+    }
+
+    <!-- 一旦获取失败 -->
+    function showError(error)
+    {
+        switch(error.code) 
+        {   
+            <!-- 用户不允许获取定位 -->
+            case error.PERMISSION_DENIED:
+                x.innerHTML="用户拒绝对获取地理位置的请求。"
+                break;
+            <!-- 无法获取当前位置 -->
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML="位置信息是不可用的。"
+                break;
+            <!-- 操作超时 -->
+            case error.TIMEOUT:
+                x.innerHTML="请求用户地理位置超时。"
+                break;
+            <!-- 未知问题 -->
+            case error.UNKNOWN_ERROR:
+                x.innerHTML="未知错误。"
+                break;
+        }
+    }
+    </script>
+    </body>
+
+
 
