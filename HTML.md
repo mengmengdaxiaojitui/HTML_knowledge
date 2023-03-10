@@ -596,5 +596,126 @@
     </script>
     </body>
 
+------------------------
+19. video:（source)
+    1. 提供了播放，暂停，音量控件来控制视频
+    2. 提供了width, height来控制视频尺寸
+    3. 支持多个source元素，可以链接不同的视频文件，游览器将使用第一个可识别的格式。
+    4. 可以用javaScript对视频进行控制
+    5. source:
+        * MP4: movie.mp4
+        * WebM: movie.webm
+        * Ogg: movie.ogg
+    <body>
+    <video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    您的浏览器不支持 HTML5 video 标签。
+    </video></body>
+
+------------------
+20. audio: ( control 和 source)
+    1. 在audio和/audio之间需要插入游览器不支持audio元素的提示文本。
+    2. control属性提供播放，暂停，音量控件
+    3. source:
+        * MP4: movie.mp4
+        * Wav: movie.wav
+        * Ogg: movie.ogg
+    <body>    
+    <audio controls>
+    <source src="horse.ogg" type="audio/ogg">
+    <source src="horse.mp3" type="audio/mpeg">
+    您的浏览器不支持 audio 元素。
+    </audio></body>
 
 
+-----------------
+21. input：
+    1. <form action="demo-form.php">
+  数量 ( 1 到 5 之间): <input type="number" name="quantity" min="1" max="5">
+  <input type="submit"></form>
+
+    2. 类型:
+        * color   
+        * date   
+        * datetime: UTC时间    
+        * datetime-local： 无时区    
+        * email：   
+            在提交表单时，会自动验证 email 域的值是否合法有效:    
+        * month   
+        * number：      
+            用于应该包含数值的输入域。您还能够设定对所接受的数字的限定
+            1. 属性规定对数字类型的限定：（disabled, max, maxlength, min, pattern, readonly, required, size, step, value)     
+        * range: 滑条
+            1. max： 规定最大值
+            2. min： 规定最小值
+            3. step： 合法数字间隔
+            4. value： 规定默认值
+        * search
+        * tel   
+        * time   
+        * url   
+        * week   
+
+    3. 新属性：
+        * autocomplete
+        * autofocus
+        * form
+        * formaction
+        * formenctype
+        * formmenthod
+        * formnovalidate
+        * formtarget
+        * height/width
+        * list
+        * min/max
+        * multiple
+        * pattern
+        * placeholder
+        * required
+        * step
+
+
+---------------
+22. 表单元素
+    1. datalist:    
+    规定输入域的选项列表,input元素的列表属性和datalist的元素绑定
+    <input list="browsers">
+
+    <datalist id="browsers">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+    </datalist>
+
+    2. keygen:       
+    提供一种验证用户的可靠方法。规定用于表单的密钥对生成器字段，当提交表单时，会生成两个键，一个是私钥（private key）储存于客户端，一个公钥（public key）发送到服务器，公钥用于验证用户的客户端证书。
+    <form action="demo_keygen.asp"  method="get">
+    用户名: <input type="text"name="usr_name">
+    加密: <keygen name="security">
+    </form>      
+
+    3. output:        
+    用于不同类型的输出，比如计算或脚本输出
+    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+    <input type="range" id="a" value="50">100
+    +<input type="number" id="b" value="50">
+    =<output name="x" for="a b"></output>
+    </form>
+
+
+-------------------
+23. form:
+    1. 定义一个form表单，提交后，表单数据就会被发到action属性定义的服务器上
+    2. form新属性：
+        * autocomplete:规定 form 或 input 域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。
+            1. autocomplete 属性有可能在 form元素中是开启的，而在input元素中是关闭的
+            2. 适用于 form 标签，以及以下类型的 input 标签，新加的
+        <form action="demo-form.php" autocomplete="on">
+        E-mail: <input type="email" name="email" autocomplete="off"><br>
+        <input type="submit">
+        </form>   
+
+        * novalidate:是一个 boolean(布尔) 属性.规定在提交表单时不应该验证 form 或 input 域。
