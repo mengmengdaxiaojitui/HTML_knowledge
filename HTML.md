@@ -635,7 +635,7 @@
   数量 ( 1 到 5 之间): <input type="number" name="quantity" min="1" max="5">
   <input type="submit"></form>
 
-    2. 类型:
+    2. type类型:
         * color   
         * date   
         * datetime: UTC时间    
@@ -655,7 +655,8 @@
         * tel   
         * time   
         * url   
-        * week   
+        * week  
+        * file 
 
     3. 新属性：
         * autocomplete
@@ -718,4 +719,51 @@
         <input type="submit">
         </form>   
 
-        * novalidate:是一个 boolean(布尔) 属性.规定在提交表单时不应该验证 form 或 input 域。
+
+        input元素的不同属性：
+        * novalidate:
+            是一个 boolean(布尔) 属性.规定在提交表单时不应该验证 form 或 input 域。
+        * autofocus:
+            是一个布尔属性，在页面加载时，域自动的获得焦点，提亮框
+        * form：
+            规定输入域所属的一个或多个表单，如需引用一个以上的表单，使用空格分隔的列表
+        * formaction：
+            描述表单提交的URL地址，会覆盖form元素中的action属性，用于type="submit"和"image"
+        * formenctype:
+            描述了表单提交到服务器的数据编码，会覆盖form元素的enctype属性。用于type="submit"和"image"
+        * formmenthod:
+            定义了表单提交的方式，覆盖了form元素的method
+        * formnovalidate：
+            是一个布尔属性，描述了input元素在表单提交时无需被验证，会覆盖form元素中的novalidate属性
+        * formtarget:
+            指定一个名称或关键字知名表单提交数据接收后的展示。例如提交到一个新的页面上。覆盖form元素的target元素
+        * height/width:
+            适用于image类型的input图像
+        * list里的datalist:
+            list属性规定输入域的datalist，datalist预定义input的值，是输入域的选项列表。
+        * min/max：
+            适用于input标签的data pickers, number, range
+        * multiple：
+            规定input元素可以选择多个值
+        * placeholder：
+            是一种简短的提示，适用于text, search, url,m telephone, email, password
+        * required:
+            规定必须在提交表格前填写输入域，不能为空
+
+
+----------------
+24. web存储：
+    1. HTML5 Web存储，可以在本地储存用户的游览数据
+    2. 在使用web存储前，需要检查游览器是否支持localStorage和sessionStorage。
+            if(typeof(Storage)!=="undefined")
+        {// 支持} 
+            else 
+        {// 抱歉! 不支持 web 存储。}
+
+    3. 客户端存储数据：
+        * localStorage:
+            用于长期保存整个网站的数据，保存的数据没有过期时间，直到手动去除。
+        * sessionStorage:
+            用于临时保存同一窗口的数据，在关闭窗口后会删除
+
+
