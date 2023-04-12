@@ -345,23 +345,28 @@
                 <!--画矩形-->
                 1. fillStyle: CSS颜色，渐变或图案，默认黑色   
                 2. fillRect(x,y,width,height):定义了矩形当前的填充方式。
+
                 <!-- 画线条 -->
                 3. moveTo(x,y):定义线条开始坐标
                 4. lineTo(x,y):定义线条结束坐标
                 5. stroke()：绘制线条
+
                 <!-- 画圆 -->
                 6. arc(x,y,start,stop):画圆
                 7. stroke()/fill():绘制圆形
+
                 <!-- 画文字 -->
                 8. font = "大小 字体样式“ :定义字体   
                 9. fillText(text,x,y):绘制实心的文本
                 10. strokeText(text,x,y):绘制空心的文本
+
                 <!-- 渐变，必须使用两种或以上的停止颜色 -->
                 11. createLinearGradient(x,y,x1,y1): 创建线条渐变   
                 12. createRadialGradient(x,y,r,x1,y1,r1):  创建一个径向/圆渐变
                 13. addColorStop(坐标，”颜色“)：指定颜色停止，参数使用坐标来描述，可以是0至1.
                 14. fillStyle: 填充渐变
                 15. fillRect(x,y,width,height):填充
+                
                 <!-- 图像放到画布上 -->
                 16. drawImage(image,x,y)
 
@@ -756,14 +761,30 @@
     1. HTML5 Web存储，可以在本地储存用户的游览数据
     2. 在使用web存储前，需要检查游览器是否支持localStorage和sessionStorage。
             if(typeof(Storage)!=="undefined")
-        {// 支持} 
+            {// 支持} 
             else 
-        {// 抱歉! 不支持 web 存储。}
+            {// 抱歉! 不支持 web 存储。}
 
     3. 客户端存储数据：
-        * localStorage:
+        * localStorage:（长期）
             用于长期保存整个网站的数据，保存的数据没有过期时间，直到手动去除。
-        * sessionStorage:
+        * sessionStorage:（临时）
             用于临时保存同一窗口的数据，在关闭窗口后会删除
 
+    4. 可使用的API：（local和session一样）
+        * 保存数据set：localStorage.setItem(key,value);
+        * 读取数据get： localStorage.getItem(key);
+        * 删除单个数据remove： localStorage.removeItem(key);
+        * 删除所有数据clear： localStorage.clear();
+        * 得到某个索引的key： localStorage.key(index)；
 
+    5. 保存与查找数据：
+        1. 简单存储和查找：
+            * save:   function save(){}
+            * find:   function find(){}
+        2. 复杂存储和查找：
+            * json.stringify存储对象：
+                var site = new Object;
+                var str = JSON.stringify(site);//将对象转换为字符串
+            * 字符串转换为json对象：
+                var site = JSON.parse(str);
