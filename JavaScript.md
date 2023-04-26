@@ -27,7 +27,7 @@
     变量是一个名称，字面量是一个值
     1. (字面量)
         * Number: 3.14 / 1001/ 123e5
-        * String: "abby" / 'abby'
+        * String: "He is called \"abby\"";或者使用不同引号
         * 表达式: 5+6 / 5*10
         * Array: [40, 100, 2, 3]
         * Object: {firstName: "abby" , lastName: "Zheng"}
@@ -44,3 +44,98 @@
     4. （注释）
         * 单行注释： // Abby
         * 多行注释： /* Abby */
+
+5. 数据类型：
+    1. 基本类型：    
+        * String: var x="abby";
+        * Number:  var x=123e-5;
+        * Boolean:  var x=true;
+        * Null:  var x=null;清空变量
+        * Undefined:
+        * Symbol（独一无二的值）:
+    2. 对象类型：    
+        * Object: var x={firstName:"abby", lastName:"zheng"};
+            1. 查询数据： name=x.firstName; 或者 x["firstName"];
+        * Array: var x=new Array("abby","2"); / var x=new Array(); x[0]="abby";
+        * Function： 
+        * (特殊对象： RegExp正则, Date)
+    3. 查询数据类型：   
+        typeof
+    4. 声明新变量：   
+        使用new
+
+6. Object: 值键
+    1. 对象可以包含多个值，每个值以name:value对呈现：var car = {name:"abby",...};
+    2. 对象方法：（调用函数）
+        methodName: function(){ // 代码 }
+    3. 访问对象方法： 
+        objectName.methodName();如果不加（）会返回函数的定义
+
+7. Function: 
+    1. 函数是由事件驱动的或者被调用时执行的可重复使用的代码块
+    2. 带参数的函数：   
+        function MyFunction(name, job){
+            alert("Welcome" + name +", the" + job);
+        }
+    3. 带返回值的函数：
+        function myFunction(){
+            var x=5;
+            return x;
+        }
+    4. 调用函数:<button onclick="MyFunction('abby', 'it')>点击这样</button>
+
+8. 作用域：
+    1. 作用域是可访问变量的集合，对象和函数同样是变量，
+    2. 局部变量：   
+        在函数里声明的，具有局部作用域，局部变量只能在函数内部访问。在函数执行完毕后销毁。
+    3. 全局变量：   
+        变量在函数外定义。变量在函数内没有使用var等关键字，则变量为全局变量。在页面关闭后销毁。在HTML中，全局变量是window对象。
+
+9. 事件：
+    1. HTML事件发生在HTML元素上的事情。
+        <some-HTML-element some-event="JavaScript 代码">
+        <button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
+    2. 常见HTML事件：
+        * onchange: HTML元素改变
+        * onclick: 用户点击HTML元素
+        * onmouseover: 鼠标指针移动到指定的元素上时发生
+        * onmouseout: 鼠标从一个HTML元素移开鼠标时发生
+        * onkeydow: 用户按下键盘按键
+        * onload： 游览器已完成页面的加载
+
+10. 字符串：
+    1. "He is called \"abby\"";或者使用不同引号，字符串可以是对象（不要创建）
+    2. 字符串长度： length
+    3. 创建字符串属性的函数：constructor
+    4. 转义字符： \
+        * \': 单引号
+        * \": 双引号
+        * \\： 反斜杠
+        * \n： 换行
+        * \r： 回车
+        * \t： tab制表符
+        * \b： 退格符
+        * \f: 换页符
+    5. 字符串方法：
+        * charAt()： 返回指定索引位置的字符
+        * charCodeAt(): 返回指定索引位置字符的 Unicode 值
+        * fromCharCode(): 将 Unicode 转换为字符串
+        * concat(): 连接两个或多个字符串，返回连接后的字符串
+        * indexOf(): 返回字符串中检索指定字符第一次出现的位置
+        * lastIndexOf(): 返回字符串中检索指定字符最后一次出现的位置
+        * match(): 找到一个或多个表达式的匹配
+        * replace(): 替换与表达式匹配的子串
+        * search(): 检索与表达式相匹配的值
+        * slice()： 提取字符串的片段，并在新的字符串中返回被提取的部分
+        * split()： 把字符串分割为子字符串数组
+        * toLowerCase()： 把字符串转换为小写
+        * toUpperCase()： 把字符串转换为大写
+        * toString(): 返回字符串对象值
+        * valueOf(): 返回某个字符串对象的原始值
+        * trim(): 移除字符串首尾空白
+
+11. 算术运算符：
+    1. +，-，*，/：
+    2. %： 取模，余数， 剩余的数是多少(x=y%2)
+    3. ++： 自增加一（x=++y)
+    4. --： 自减加一 (x=--y)
