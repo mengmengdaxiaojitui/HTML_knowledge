@@ -139,3 +139,65 @@
     2. %： 取模，余数， 剩余的数是多少(x=y%2)
     3. ++： 自增加一（x=++y)
     4. --： 自减加一 (x=--y)
+
+12. 比较运算符：
+    1. ==：等于
+    2. !=： 不等于
+    3. ===： 绝对等于
+    4. !==： 绝对不等于
+    5. &&： and
+    6. ||: or
+    7. !: not
+    8. 对变量进行赋值的条件运算符：
+        variablename=(condition)?value1:value2;
+        voteable=(age<18)?"年龄太小”：“年龄已达到”；
+
+13. 条件语句：
+    1. if:
+        * 只有当指定条件为true时使用该语句执行代码
+        * if(condition){
+            当条件为true执行的代码
+        }
+
+    2. if...else:
+        * true执行代码，false执行别的代码
+    3. if...else if...else:
+        * 选择多个代码块之一来执行
+    4. switch:
+        * 穿着多个代码块之一来执行
+        * switch(n){
+            case 1:
+                执行代码块 1
+                break;
+            case 2:
+                执行代码块 2
+                break;
+            default:
+                与 case 1 和 case 2 不同时执行的代码
+        } 
+
+14. for循环：
+    1. for: 有一定的次数
+        * for (语句 1; 语句 2; 语句 3)
+          { 被执行的代码块 }
+        * 语句1： 开始前执行，可任意值或多个值（ var i=0; )
+        * 语句2： 运行循环的条件( i<5; )
+        * 语句3： 在循环代码块执行后执行( i++; )  
+
+    2. for/in: 循环遍历对象的属性
+        * var person={fname:"Bill",lname:"Gates",age:56}; 
+            for (x in person)  // x 为属性名
+            { txt=txt + person[x]; }
+
+    3. while: 当指定条件为true时循环指定的代码块
+        * while (条件)
+        { x=x + "The numver is " + i;
+          i++  }
+
+    4. do/while: 当指定的条件为trur时循环指定的代码块,该循环至少执行一次
+        * do{ 需要执行的代码 }
+          while (条件);
+
+15. break / continue
+    1. break: 跳出循环
+    2. continue: 跳出当前循环的迭代，显示下一个
